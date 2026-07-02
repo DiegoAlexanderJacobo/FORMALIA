@@ -1,0 +1,443 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FORMALIA - Firma de Documentos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .success-check-pulse {
+            animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(.33); }
+            80%, 100% { opacity: 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* SVG Success Animation */
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px #006c49;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: #006c49;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes scale {
+            0%, 100% { transform: none; }
+            50% { transform: scale3d(1.1, 1.1, 1); }
+        }
+        @keyframes fill {
+            100% { box-shadow: inset 0px 0px 0px 40px #006c49; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#444651",
+                        "surface-container-high": "#e9e7ef",
+                        "on-secondary-fixed": "#002113",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-error-container": "#93000a",
+                        "primary": "#00236f",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-container": "#1e3a8a",
+                        "surface-tint": "#4059aa",
+                        "inverse-primary": "#b6c4ff",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-container": "#eeedf4",
+                        "outline-variant": "#c5c5d3",
+                        "on-surface": "#1a1b21",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-highest": "#e3e1e9",
+                        "secondary-container": "#6cf8bb",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#341100",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary": "#ffffff",
+                        "outline": "#757682",
+                        "surface": "#faf8ff",
+                        "inverse-on-surface": "#f1f0f7",
+                        "surface-dim": "#dad9e1",
+                        "primary-fixed": "#dce1ff",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "background": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#f39461",
+                        "secondary": "#006c49",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "surface-variant": "#e3e1e9",
+                        "surface-container-low": "#f4f3fa",
+                        "on-background": "#1a1b21",
+                        "tertiary-container": "#6e2c00",
+                        "inverse-surface": "#2f3036",
+                        "tertiary": "#4b1c00",
+                        "on-primary-container": "#90a8ff",
+                        "secondary-fixed-dim": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "8px",
+                        "container-margin": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+            .shake {
+                animation: k-shake 0.4s ease-in-out;
+            }
+            @keyframes k-shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-8px); }
+                50% { transform: translateX(8px); }
+                75% { transform: translateX(-4px); }
+            }
+        </style><style>
+            .shake {
+                animation: k-shake 0.4s ease-in-out;
+            }
+            @keyframes k-shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-8px); }
+                50% { transform: translateX(8px); }
+                75% { transform: translateX(-4px); }
+            }
+        </style></head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface-container-lowest shadow-sm docked full-width top-0 z-40">
+<nav class="flex justify-between items-center w-full px-container-margin h-16 max-w-7xl mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">FORMALIA</div>
+<div class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Roadmap</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-bold font-body-md text-body-md" href="#">Vault</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-label-sm">JD</div>
+</div>
+</nav>
+</header>
+<!-- Main Content Canvas (Blurred Background) -->
+<main class="flex-grow p-container-margin flex flex-col items-center justify-center relative">
+<div class="max-w-4xl w-full opacity-30 pointer-events-none filter blur-sm">
+<h1 class="font-headline-lg text-headline-lg mb-lg">Mis Documentos</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-md">
+<span class="material-symbols-outlined text-primary text-4xl">description</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-1 rounded-full text-label-sm">Completado</span>
+</div>
+<p class="font-headline-md text-headline-md mb-xs">Declaración Jurada 2023</p>
+<p class="text-on-surface-variant text-body-md">Subido el 12 de Octubre</p>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-md">
+<span class="material-symbols-outlined text-primary text-4xl">description</span>
+<span class="bg-error-container text-on-error-container px-sm py-1 rounded-full text-label-sm">Pendiente</span>
+</div>
+<p class="font-headline-md text-headline-md mb-xs">Formulario FUT</p>
+<p class="text-on-surface-variant text-body-md">Vence en 2 días</p>
+</div>
+</div>
+</div>
+<!-- Document Signing Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-md bg-black/40 backdrop-blur-sm" id="modal-overlay">
+<div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[921px]" id="signature-modal">
+<!-- Modal Header -->
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">draw</span>
+<h2 class="font-headline-md text-headline-md">Firma Electrónica Autorizada</h2>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Content -->
+<div class="flex-grow overflow-y-auto p-lg space-y-lg">
+<!-- Document Preview Area -->
+<div class="bg-surface-container-low rounded-xl p-md border border-outline-variant relative group">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-label-md text-on-surface-variant uppercase tracking-wider">Vista Previa: Formulario FUT</span>
+<span class="text-label-sm text-outline">Página 1 de 1</span>
+</div>
+<!-- Formal Government Form Content -->
+<div class="bg-white p-xl shadow-sm rounded border border-outline-variant space-y-md min-h-[300px] text-[13px] leading-tight">
+<div class="flex justify-between border-b-2 border-primary pb-sm items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">account_balance</span>
+</div>
+<div class="font-bold text-primary text-label-md">AGENCIA TRIBUTARIA NACIONAL</div>
+</div>
+<div class="text-right">
+<div class="text-label-sm font-mono text-outline">DOC-ID: 8829-XJ-2024</div>
+<div class="text-[10px] text-outline font-bold">FORMULARIO OFICIAL FUT-V2</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 border-b border-outline-variant pb-md pt-xs">
+<div class="col-span-2 space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">Contribuyente / Nombre Completo</label>
+<div class="bg-surface-container-low px-2 py-1 rounded font-bold text-on-surface">JUAN PABLO DOMÍNGUEZ FIGUEROA</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase font-bold text-outline">R.U.T. / I.D.</label>
+<div class="bg-surface-container-low px-2 py-1 rounded font-bold text-on-surface text-center">18.442.991-K</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="h-3 bg-surface-container-high rounded w-1/4"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-2 border border-outline-variant rounded bg-surface-bright space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-outline">AÑO TRIBUTARIO</span>
+<span class="font-bold">2024</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-outline">CÓDIGO DE ACTIVIDAD</span>
+<span class="font-bold">72.201</span>
+</div>
+</div>
+<div class="p-2 border border-outline-variant rounded bg-surface-bright space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-outline">MONTO DECLARADO</span>
+<span class="font-bold text-primary">$12.440.000</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-outline">IMPUESTO DETERMINADO</span>
+<span class="font-bold text-secondary">$1.244.000</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-md space-y-2">
+<div class="h-2 bg-surface-container-highest rounded w-full"></div>
+<div class="h-2 bg-surface-container-highest rounded w-5/6"></div>
+<div class="h-2 bg-surface-container-highest rounded w-4/6"></div>
+</div>
+<div class="mt-lg p-md bg-primary/5 rounded border-l-4 border-primary italic text-on-surface-variant text-body-md text-sm leading-relaxed">
+        "Por la presente certifico que los datos contenidos en este formulario son verídicos y autorizo su procesamiento ante las entidades regulatorias correspondientes, bajo pena de perjurio según el Artículo 210 del Código Penal."
+    </div>
+</div>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+<div class="bg-white/90 px-md py-sm rounded-full shadow-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">zoom_in</span>
+<span class="text-label-md text-primary">Click para expandir</span>
+</div>
+</div>
+</div>
+<!-- Authorization Section -->
+<div class="space-y-md" id="auth-section">
+<div class="p-md bg-secondary-container/20 rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary mt-1">verified_user</span>
+<div class="space-y-1">
+<p class="font-label-md text-on-secondary-container">Nivel de Seguridad: Alto</p>
+<p class="text-label-sm text-on-surface-variant">Se requiere su contraseña de firma electrónica para proceder con la transacción legal.</p>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface" for="sign-pass">Contraseña de Autorización</label>
+<div class="relative">
+<input class="w-full h-12 px-md pt-2 pb-2 rounded-xl border border-outline bg-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" id="sign-pass" placeholder="••••••••" type="password">
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-outline-variant hover:text-on-surface-variant">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<p class="text-label-sm text-outline">¿Olvidó su contraseña de firma? <a class="text-primary font-bold hover:underline" href="#">Recuperar</a></p>
+</div>
+</div>
+<!-- Success State Animation Area (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-xl space-y-md animate-in fade-in zoom-in duration-500" id="success-section">
+<div class="flex items-center justify-center">
+<!-- SVG Success Checkmark -->
+<svg class="checkmark" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+<circle class="checkmark__circle" cx="26" cy="26" fill="none" r="25"></circle>
+<path class="checkmark__check" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none"></path>
+</svg>
+</div>
+<div class="text-center">
+<h3 class="font-headline-md text-headline-md text-secondary">¡Documento Firmado!</h3>
+<p class="text-body-md text-on-surface-variant">El Formulario FUT ha sido validado y enviado con éxito.</p>
+</div>
+<!-- Receipt/Ref Box -->
+<div class="w-full max-w-sm bg-surface-container-low p-md rounded-xl border border-outline-variant text-center space-y-1">
+<p class="text-label-sm text-outline uppercase tracking-tighter">Código de Verificación</p>
+<p class="font-mono font-bold text-primary">SIG-2024-X99-4A7B-L293</p>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-lg bg-surface-container-low border-t border-outline-variant flex gap-md" id="modal-footer">
+<button class="flex-1 h-12 bg-white border border-outline text-on-surface-variant font-bold rounded-xl hover:bg-surface-container-high transition-all active:scale-95" onclick="closeModal()">Cancelar</button>
+<button class="flex-1 h-12 bg-gradient-to-r from-primary to-secondary text-white font-bold rounded-xl shadow-[0_4px_12px_rgba(0,35,111,0.2)] hover:shadow-[0_8px_24px_rgba(0,35,111,0.3)] transition-all active:scale-95 flex items-center justify-center gap-sm" onclick="handleSign()">
+<span class="material-symbols-outlined">key</span>
+                        Firmar y Enviar
+                    </button>
+</div>
+<!-- Success Footer (Hidden by default) -->
+<div class="hidden p-lg bg-surface-container-low border-t border-outline-variant" id="success-footer">
+<button class="w-full h-12 bg-primary text-white font-bold rounded-xl transition-all active:scale-95" onclick="closeModal()">Volver al Vault</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container shadow-[0_-4px_12px_rgba(0,0,0,0.05)] flex justify-around items-center px-4 py-2 pb-safe rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-label-sm text-label-sm">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-label-sm">Assistant</span>
+</a>
+</footer>
+<script>
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            overlay.classList.add('opacity-0');
+            overlay.style.pointerEvents = 'none';
+            setTimeout(() => {
+                // Reset for next time (simplified logic for demo)
+                window.location.reload(); 
+            }, 300);
+        }
+
+        function handleSign() {
+            const passwordInput = document.getElementById('sign-pass');
+            if (passwordInput.value.length < 4) {
+                passwordInput.classList.add('border-error', 'shake');
+                setTimeout(() => passwordInput.classList.remove('shake'), 500);
+                return;
+            }
+
+            // Show loading state on button
+            const btn = event.currentTarget;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Procesando...';
+            btn.disabled = true;
+
+            // Artificial delay to simulate processing before success animation
+            setTimeout(() => {
+                // Transition to success state
+                const authSection = document.getElementById('auth-section');
+                const successSection = document.getElementById('success-section');
+                const modalFooter = document.getElementById('modal-footer');
+                const successFooter = document.getElementById('success-footer');
+
+                authSection.classList.add('hidden');
+                modalFooter.classList.add('hidden');
+                
+                successSection.classList.remove('hidden');
+                successFooter.classList.remove('hidden');
+
+                // Trigger success vibration if available
+                if ("vibrate" in navigator) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+            }, 800);
+        }
+
+        // Add shake animation style dynamically
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .shake {
+                animation: k-shake 0.4s ease-in-out;
+            }
+            @keyframes k-shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-8px); }
+                50% { transform: translateX(8px); }
+                75% { transform: translateX(-4px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dce1ff",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-container": "#eeedf4",
+                        "surface-container-low": "#f4f3fa",
+                        "outline-variant": "#c5c5d3",
+                        "inverse-on-surface": "#f1f0f7",
+                        "tertiary-container": "#6e2c00",
+                        "primary": "#00236f",
+                        "on-primary-container": "#90a8ff",
+                        "primary-container": "#1e3a8a",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3036",
+                        "surface-container-highest": "#e3e1e9",
+                        "surface-container-high": "#e9e7ef",
+                        "secondary-fixed": "#6ffbbe",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#faf8ff",
+                        "on-secondary-fixed": "#002113",
+                        "outline": "#757682",
+                        "inverse-primary": "#b6c4ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-surface": "#1a1b21",
+                        "on-tertiary-container": "#f39461",
+                        "on-primary-fixed": "#00164e",
+                        "tertiary": "#4b1c00",
+                        "on-primary-fixed-variant": "#264191",
+                        "background": "#faf8ff",
+                        "surface-tint": "#4059aa",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "secondary": "#006c49",
+                        "secondary-container": "#6cf8bb",
+                        "on-background": "#1a1b21",
+                        "on-secondary-container": "#00714d",
+                        "surface-variant": "#e3e1e9",
+                        "surface-dim": "#dad9e1",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#444651",
+                        "surface": "#faf8ff",
+                        "primary-fixed-dim": "#b6c4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "gutter": "16px",
+                        "container-margin": "20px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #006c49 0%, #00236f 100%);
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex flex-col min-h-screen">
+<!-- Header Navigation (Desktop/Tablet) -->
+<header class="bg-surface-container-lowest shadow-sm h-16 sticky top-0 z-40 hidden md:block">
+<div class="max-w-7xl mx-auto px-container-margin h-full flex justify-between items-center">
+<span class="font-headline-md text-headline-md font-bold text-primary">FORMALIA</span>
+<nav class="flex space-x-lg items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Roadmap</a>
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold" href="#">Vault</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Profile</a>
+<div class="ml-xl flex items-center space-x-md">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="text-on-primary-container text-[12px] font-bold">JD</span>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<!-- Main Content Simulation (SCREEN_26 Context) -->
+<main class="flex-grow p-container-margin md:p-xl max-w-7xl mx-auto w-full relative">
+<div class="flex flex-col gap-lg opacity-40 select-none pointer-events-none">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Registro de Compras</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Gestión de facturas y egresos</p>
+</div>
+<button class="btn-gradient text-white px-lg py-sm rounded-xl font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined">add</span> Nuevo Registro
+                </button>
+</div>
+<!-- Table Mockup -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] overflow-hidden">
+<div class="grid grid-cols-4 p-md bg-surface-container font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">
+<div>RUC / EMISOR</div>
+<div>FACTURA</div>
+<div>FECHA</div>
+<div class="text-right">MONTO</div>
+</div>
+<div class="p-md grid grid-cols-4 items-center border-b border-outline-variant last:border-0">
+<div class="font-label-md text-label-md">20601234567</div>
+<div class="font-body-md text-body-md">E001-000452</div>
+<div class="font-body-md text-body-md">14 Oct 2023</div>
+<div class="font-label-md text-label-md text-right text-primary">S/ 1,450.00</div>
+</div>
+</div>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-md bg-on-surface/30 backdrop-blur-sm animate-in fade-in duration-300">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-8 duration-500">
+<!-- Modal Header -->
+<div class="px-lg py-lg flex justify-between items-center border-b border-surface-variant bg-surface-bright">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Editar Factura</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Modificar registro de compra existente</p>
+</div>
+<button class="material-symbols-outlined text-outline p-2 hover:bg-surface-container-low rounded-full transition-colors">close</button>
+</div>
+<!-- Modal Body (Form) -->
+<form class="p-lg space-y-lg">
+<!-- RUC Field -->
+<div class="space-y-base">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="ruc">RUC del Proveedor</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">corporate_fare</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="ruc" placeholder="Ej: 20601234567" type="text" value="20601234567"/>
+</div>
+</div>
+<!-- Invoice Number -->
+<div class="space-y-base">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="invoice_num">Número de Factura</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">description</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="invoice_num" placeholder="Ej: F001-001234" type="text" value="E001-000452"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<!-- Amount Field -->
+<div class="space-y-base">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="amount">Monto (S/)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">payments</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="amount" placeholder="0.00" step="0.01" type="number" value="1450.00"/>
+</div>
+</div>
+<!-- Date Field -->
+<div class="space-y-base">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="date">Fecha</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">calendar_today</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="date" type="date" value="2023-10-14"/>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-lg flex flex-col gap-sm">
+<button class="w-full h-12 btn-gradient text-white rounded-xl font-label-md text-label-md shadow-lg shadow-primary/20 active:scale-95 transition-all" type="submit">
+                            Aceptar
+                        </button>
+<button class="w-full h-12 bg-surface-container text-on-surface-variant rounded-xl font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-all" type="button">
+                            Cancelar
+                        </button>
+</div>
+</form>
+<!-- Help Info -->
+<div class="p-md bg-surface-container-low border-t border-surface-variant flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                        Los cambios realizados se verán reflejados inmediatamente en tu declaración de impuestos del mes en curso.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container flex justify-around items-center px-4 py-2 pb-safe shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-label-sm text-label-sm">Purchases</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-label-sm">Assistant</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Procesando...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Actualizado';
+                btn.classList.remove('btn-gradient');
+                btn.classList.add('bg-secondary', 'text-white');
+                
+                setTimeout(() => {
+                    // Close simulation
+                    document.querySelector('.fixed.inset-0').classList.add('opacity-0');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 300);
+                }, 1000);
+            }, 1200);
+        });
+
+        // Close button simulation
+        document.querySelectorAll('button:not([type="submit"])').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if(btn.innerText.includes('Cancelar') || btn.innerText === 'close') {
+                    document.querySelector('.fixed.inset-0').classList.add('opacity-0');
+                }
+            });
+        });
+    </script>
+</body></html>

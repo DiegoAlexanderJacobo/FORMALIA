@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FORMALIA - Editar Venta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dce1ff",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-container": "#eeedf4",
+                    "surface-container-low": "#f4f3fa",
+                    "outline-variant": "#c5c5d3",
+                    "inverse-on-surface": "#f1f0f7",
+                    "tertiary-container": "#6e2c00",
+                    "primary": "#00236f",
+                    "on-primary-container": "#90a8ff",
+                    "primary-container": "#1e3a8a",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2f3036",
+                    "surface-container-highest": "#e3e1e9",
+                    "surface-container-high": "#e9e7ef",
+                    "secondary-fixed": "#6ffbbe",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#faf8ff",
+                    "on-secondary-fixed": "#002113",
+                    "outline": "#757682",
+                    "inverse-primary": "#b6c4ff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-surface": "#1a1b21",
+                    "on-tertiary-container": "#f39461",
+                    "on-primary-fixed": "#00164e",
+                    "tertiary": "#4b1c00",
+                    "on-primary-fixed-variant": "#264191",
+                    "background": "#faf8ff",
+                    "surface-tint": "#4059aa",
+                    "on-tertiary-fixed-variant": "#773205",
+                    "secondary": "#006c49",
+                    "secondary-container": "#6cf8bb",
+                    "on-background": "#1a1b21",
+                    "on-secondary-container": "#00714d",
+                    "surface-variant": "#e3e1e9",
+                    "surface-dim": "#dad9e1",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#341100",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#444651",
+                    "surface": "#faf8ff",
+                    "primary-fixed-dim": "#b6c4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "gutter": "16px",
+                    "container-margin": "20px",
+                    "base": "4px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gradient-button {
+            background: linear-gradient(135deg, #00236f 0%, #006c49 100%);
+        }
+        .modal-overlay {
+            backdrop-filter: blur(4px);
+            background-color: rgba(26, 27, 33, 0.4);
+        }
+        .floating-label-input:focus-within label,
+        .floating-label-input input:not(:placeholder-shown) + label {
+            transform: translateY(-20px) scale(0.85);
+            color: #4059aa;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen">
+<!-- SCREEN_10 Context (Blurred Background) -->
+<div aria-hidden="true" class="max-w-7xl mx-auto px-container-margin py-8 opacity-40 select-none pointer-events-none">
+<header class="mb-xl flex justify-between items-center">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary">Sales History</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Review and manage your transactions</p>
+</div>
+<div class="h-12 w-12 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">history</span>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-secondary">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Daily Total</p>
+<p class="font-headline-md text-headline-md">$1,240.00</p>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-primary">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Transactions</p>
+<p class="font-headline-md text-headline-md">14</p>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-tertiary">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Average Ticket</p>
+<p class="font-headline-md text-headline-md">$88.50</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-label-md text-label-md">Recent Entries</h2>
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="p-md flex justify-between items-center bg-primary-fixed/20">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">payments</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Venta de Repuestos</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Oct 24, 2023 • 14:30</p>
+</div>
+</div>
+<p class="font-headline-md text-headline-md text-secondary">$450.00</p>
+</div>
+<!-- Mock list continues... -->
+</div>
+</div>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-md modal-overlay">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-[24px] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<div class="px-xl pt-xl pb-md flex justify-between items-start">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Editar Venta</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Actualiza los detalles de esta transacción</p>
+</div>
+<button class="text-outline hover:bg-surface-container-low p-base rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Form Content -->
+<div class="px-xl pb-xl space-y-lg">
+<!-- Summary Card (Pre-filled Context) -->
+<div class="bg-surface-container-low p-md rounded-xl flex items-center gap-md">
+<div class="p-sm bg-primary-container text-on-primary-container rounded-lg">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">ID Transacción</p>
+<p class="font-label-md text-label-md">#FT-99231024</p>
+</div>
+</div>
+<!-- Date Input -->
+<div class="relative flex flex-col pt-base group">
+<div class="flex items-center border border-outline-variant rounded-xl h-[56px] px-md group-focus-within:border-primary group-focus-within:ring-1 group-focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-sm">calendar_today</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-on-surface p-0" id="sale_date" type="date" value="2023-10-24"/>
+</div>
+<label class="absolute left-md -top-2 bg-surface-container-lowest px-base font-label-sm text-label-sm text-on-surface-variant" for="sale_date">Fecha de Venta</label>
+</div>
+<!-- Amount Input -->
+<div class="relative flex flex-col pt-base group">
+<div class="flex items-center border border-outline-variant rounded-xl h-[56px] px-md group-focus-within:border-primary group-focus-within:ring-1 group-focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-sm">attach_money</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-headline-md text-on-surface p-0" id="sale_amount" placeholder="0.00" step="0.01" type="number" value="450.00"/>
+</div>
+<label class="absolute left-md -top-2 bg-surface-container-lowest px-base font-label-sm text-label-sm text-on-surface-variant" for="sale_amount">Monto Total</label>
+</div>
+<!-- Description Input -->
+<div class="relative flex flex-col pt-base group">
+<div class="flex items-start border border-outline-variant rounded-xl min-h-[100px] px-md py-sm group-focus-within:border-primary group-focus-within:ring-1 group-focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-sm mt-1">description</span>
+<textarea class="w-full bg-transparent border-none focus:ring-0 font-body-md text-on-surface p-0 resize-none h-full" id="sale_desc" placeholder="Ej. Cliente recurrente o descripción del producto">Venta de Repuestos - Juan Perez</textarea>
+</div>
+<label class="absolute left-md -top-2 bg-surface-container-lowest px-base font-label-sm text-label-sm text-on-surface-variant" for="sale_desc">Cliente / Descripción</label>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-md pt-md">
+<button class="flex-1 order-2 sm:order-1 px-lg py-md rounded-full font-label-md text-label-md text-on-surface-variant bg-surface-container-high hover:bg-outline-variant transition-colors">
+                        Cancelar
+                    </button>
+<button class="flex-[2] order-1 sm:order-2 px-lg py-md rounded-full font-label-md text-label-md text-white gradient-button shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Aceptar
+                    </button>
+</div>
+</div>
+<!-- Accessibility Note -->
+<div class="px-xl py-md bg-surface-container-low text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Los cambios se verán reflejados en sus reportes fiscales.</p>
+</div>
+</div>
+</div>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Haptic feedback simulation if applicable or close logic
+                if (btn.innerText.includes('Cancelar') || btn.innerText.includes('close')) {
+                    const modal = btn.closest('.fixed');
+                    modal.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => modal.remove(), 200);
+                }
+                if (btn.innerText.includes('Aceptar')) {
+                    const originalContent = btn.innerHTML;
+                    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Procesando...';
+                    btn.disabled = true;
+                    setTimeout(() => {
+                        btn.innerHTML = '<span class="material-symbols-outlined">done</span> Guardado';
+                        btn.classList.replace('gradient-button', 'bg-secondary');
+                        setTimeout(() => {
+                            const modal = btn.closest('.fixed');
+                            modal.classList.add('opacity-0', 'translate-y-4');
+                            setTimeout(() => modal.remove(), 300);
+                        }, 800);
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body></html>

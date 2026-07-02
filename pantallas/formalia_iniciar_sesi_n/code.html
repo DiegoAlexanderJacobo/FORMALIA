@@ -1,0 +1,226 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FORMALIA - Iniciar Sesión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#444651",
+                    "surface-container-high": "#e9e7ef",
+                    "on-secondary-fixed": "#002113",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-error-container": "#93000a",
+                    "primary": "#00236f",
+                    "on-primary-fixed-variant": "#264191",
+                    "on-secondary-fixed-variant": "#005236",
+                    "primary-container": "#1e3a8a",
+                    "surface-tint": "#4059aa",
+                    "inverse-primary": "#b6c4ff",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-container": "#eeedf4",
+                    "outline-variant": "#c5c5d3",
+                    "on-surface": "#1a1b21",
+                    "surface-bright": "#faf8ff",
+                    "surface-container-highest": "#e3e1e9",
+                    "secondary-container": "#6cf8bb",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#341100",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#00714d",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#00164e",
+                    "on-primary": "#ffffff",
+                    "outline": "#757682",
+                    "surface": "#faf8ff",
+                    "inverse-on-surface": "#f1f0f7",
+                    "surface-dim": "#dad9e1",
+                    "primary-fixed": "#dce1ff",
+                    "on-tertiary-fixed-variant": "#773205",
+                    "background": "#faf8ff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#f39461",
+                    "secondary": "#006c49",
+                    "primary-fixed-dim": "#b6c4ff",
+                    "surface-variant": "#e3e1e9",
+                    "surface-container-low": "#f4f3fa",
+                    "on-background": "#1a1b21",
+                    "tertiary-container": "#6e2c00",
+                    "inverse-surface": "#2f3036",
+                    "tertiary": "#4b1c00",
+                    "on-primary-container": "#90a8ff",
+                    "secondary-fixed-dim": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "12px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xs": "8px",
+                    "container-margin": "20px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf8ff; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #00236f 0%, #006c49 100%);
+        }
+        .primary-gradient:hover {
+            opacity: 0.95;
+            box-shadow: 0 4px 12px rgba(0, 35, 111, 0.2);
+        }
+        .input-focus-ring:focus {
+            outline: none;
+            border-color: #00236f;
+            ring: 2px;
+            ring-color: #00236f;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col items-center justify-center p-container-margin overflow-hidden relative">
+<!-- Background Subtle Atmospheric Element -->
+<div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-secondary-fixed-dim blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[300px] h-[300px] bg-primary-fixed blur-[100px] rounded-full"></div>
+</div>
+<!-- Login Container -->
+<main class="relative z-10 w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-700">
+<!-- Logo Section -->
+<div class="flex flex-col items-center mb-xl">
+<div class="w-16 h-16 mb-md rounded-2xl primary-gradient flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-[32px]">account_balance</span>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight">FORMALIA</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-base">Gestión empresarial con integridad</p>
+</div>
+<!-- Login Card -->
+<div class="bg-surface-container-lowest rounded-[24px] shadow-[0_4px_12px_rgba(0,0,0,0.05)] p-xl border border-surface-container-high">
+<form action="#" class="space-y-lg" method="POST">
+<!-- Email Field -->
+<div class="space-y-base">
+<label class="font-label-md text-label-md text-on-surface-variant block ml-1" for="email">Email</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="w-full h-[52px] pl-11 pr-md bg-surface border border-outline-variant rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline/50 transition-all focus:border-primary focus:ring-1 focus:ring-primary outline-none" id="email" name="email" placeholder="nombre@empresa.com" required="" type="email">
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-base">
+<div class="flex justify-between items-center px-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Contraseña</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline transition-all" href="#">Olvidé mi contraseña</a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="w-full h-[52px] pl-11 pr-md bg-surface border border-outline-variant rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline/50 transition-all focus:border-primary focus:ring-1 focus:ring-primary outline-none" id="password" name="password" placeholder="••••••••" required="" type="password">
+<button class="absolute inset-y-0 right-0 pr-md flex items-center text-outline hover:text-on-surface-variant" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined text-[20px]" id="visibility_icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me (Optional but professional) -->
+<div class="flex items-center px-1">
+<input class="h-4 w-4 rounded border-outline-variant text-primary focus:ring-primary" id="remember-me" name="remember-me" type="checkbox">
+<label class="ml-sm block font-label-sm text-label-sm text-on-surface-variant" for="remember-me">Mantener sesión iniciada</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-[56px] primary-gradient text-white font-headline-md text-headline-md rounded-xl transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-sm" type="submit">
+                    Ingresar
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+<div class="mt-xl pt-lg border-t border-surface-container-high text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    ¿No tienes una cuenta? 
+                    <a class="text-primary font-label-md hover:underline" href="#">Solicitar demo</a>
+</p>
+</div>
+</div>
+<!-- Footer Links -->
+<footer class="mt-xl flex flex-col items-center gap-md">
+<div class="flex items-center gap-xl">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Landing</a>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Soporte</a>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidad</a>
+</div>
+<p class="font-label-sm text-label-sm text-outline opacity-70">© 2024 FORMALIA. Todos los derechos reservados.</p>
+</footer>
+</main>
+<!-- Side Imagery (Subtle Desktop Only Decoration) -->
+<div class="hidden xl:block absolute left-10 bottom-10 w-64 h-64 opacity-10">
+<div class="w-full h-full bg-cover rounded-full mix-blend-multiply" data-alt="A clean architectural rendering of a modern, professional office building with large glass windows reflecting a clear blue sky. The visual style is minimalist and high-end, emphasizing corporate reliability and institutional trust. Soft daylight creates a hopeful and optimistic atmosphere for a business-oriented user interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEU57E4cx4RK7Rvq0SP-eVsT0BJXzebOQSZfLLJwJBMBTX183IU5u8zzeTw7G45NyKVgXNfwgJrvqRSXmXCSfa45EKHvqctjTXii3Or0T17_f-ITVVAG_ABeDToxegb40RlZ570hDhDR0tXX7-bcdRL8dO5cWzpiUgXhMOhyMQoqMASsJkpPrKUKpYY-DaK4CfGoehotstRZFzyHFg7Hu322ZVnCnhIISxSXJwL-Ud6YbVsgStvlDd26g5QZ7c-IQtMcbJ8UiD_yZt')"></div>
+</div>
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const icon = document.getElementById('visibility_icon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        }
+
+        // Simple Fade-in micro-interaction
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.parentElement.classList.add('scale-[1.01]');
+                });
+                input.addEventListener('blur', () => {
+                    input.parentElement.classList.remove('scale-[1.01]');
+                });
+            });
+        });
+    </script>
+</body></html>

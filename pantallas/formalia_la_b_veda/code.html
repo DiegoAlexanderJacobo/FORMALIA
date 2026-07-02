@@ -1,0 +1,299 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FORMALIA - La Bóveda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#444651",
+                        "surface-container-high": "#e9e7ef",
+                        "on-secondary-fixed": "#002113",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-error-container": "#93000a",
+                        "primary": "#00236f",
+                        "on-primary-fixed-variant": "#264191",
+                        "on-secondary-fixed-variant": "#005236",
+                        "primary-container": "#1e3a8a",
+                        "surface-tint": "#4059aa",
+                        "inverse-primary": "#b6c4ff",
+                        "tertiary-fixed": "#ffdbcb",
+                        "surface-container": "#eeedf4",
+                        "outline-variant": "#c5c5d3",
+                        "on-surface": "#1a1b21",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-highest": "#e3e1e9",
+                        "secondary-container": "#6cf8bb",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#341100",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary": "#ffffff",
+                        "outline": "#757682",
+                        "surface": "#faf8ff",
+                        "inverse-on-surface": "#f1f0f7",
+                        "surface-dim": "#dad9e1",
+                        "primary-fixed": "#dce1ff",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "background": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#f39461",
+                        "secondary": "#006c49",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "surface-variant": "#e3e1e9",
+                        "surface-container-low": "#f4f3fa",
+                        "on-background": "#1a1b21",
+                        "tertiary-container": "#6e2c00",
+                        "inverse-surface": "#2f3036",
+                        "tertiary": "#4b1c00",
+                        "on-primary-container": "#90a8ff",
+                        "secondary-fixed-dim": "#4edea3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "8px",
+                        "container-margin": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #00236f 0%, #006c49 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest shadow-sm fixed top-0 w-full z-40 h-16">
+<div class="flex justify-between items-center w-full px-container-margin h-16 max-w-7xl mx-auto">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">FORMALIA</h1>
+<nav class="hidden md:flex space-x-lg items-center"><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dashboard</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Roadmap</a><a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold" href="#">Bóveda</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Ventas</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Compras</a></nav>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-primary">account_circle</span></button></div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 px-container-margin max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">La Bóveda</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Tus documentos esenciales, organizados y seguros bajo estandares gubernamentales.</p>
+</div>
+<!-- Search & Filter Bar -->
+<div class="flex flex-col md:flex-row gap-md mb-lg">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface-container-lowest h-12 outline-none transition-all" placeholder="Buscar documentos..." type="text">
+</div>
+<button class="flex items-center justify-center gap-xs px-md py-3 bg-surface-container-highest rounded-xl text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-label-md text-label-md">Filtrar</span>
+</button>
+<button class="flex items-center justify-center gap-xs px-lg py-3 bg-gradient-primary text-white rounded-xl font-label-md text-label-md shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+                Subir Documento
+            </button>
+</div>
+<!-- Storage Overview Card -->
+<div class="bg-surface-container-lowest rounded-[24px] p-lg mb-lg border border-surface-container shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-lg">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">cloud_done</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Uso de Almacenamiento</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">45.8 MB de 100 MB utilizados</p>
+</div>
+</div>
+<div class="flex-grow max-w-md">
+<div class="w-full bg-surface-container rounded-full h-3">
+<div class="bg-primary h-3 rounded-full" style="width: 45.8%"></div>
+</div>
+</div>
+</div>
+<!-- Document Grid -->
+<div class="bento-grid">
+<!-- Document Card 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] border border-surface-container p-md hover:shadow-lg transition-all group relative">
+<div class="w-full aspect-[4/3] bg-surface-container-low rounded-xl mb-md flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-error text-5xl opacity-80 group-hover:scale-110 transition-transform">picture_as_pdf</span>
+<!-- Simplified Visual Representation -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-md">
+<span class="font-label-sm text-label-sm text-primary font-bold">PDF - 1.2MB</span>
+</div>
+</div>
+<div class="mb-sm">
+<h4 class="font-label-md text-label-md text-on-surface truncate">RUC_10.pdf</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Actualizado hace 2 días</p>
+</div>
+<div class="flex justify-between items-center gap-xs">
+<button class="flex-grow py-2 rounded-lg bg-surface-container-low text-primary font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">Ver</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">download</span></button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">share</span></button>
+</div>
+</div>
+<!-- Document Card 2 -->
+<div class="bg-surface-container-lowest rounded-[24px] border border-surface-container p-md hover:shadow-lg transition-all group">
+<div class="w-full aspect-[4/3] bg-surface-container-low rounded-xl mb-md flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-5xl opacity-80 group-hover:scale-110 transition-transform">verified</span>
+</div>
+<div class="mb-sm">
+<h4 class="font-label-md text-label-md text-on-surface truncate">Licencia.pdf</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Expira en 12 meses</p>
+</div>
+<div class="flex justify-between items-center gap-xs">
+<button class="flex-grow py-2 rounded-lg bg-surface-container-low text-primary font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">Ver</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">download</span></button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">share</span></button>
+</div>
+</div>
+<!-- Document Card 3 -->
+<div class="bg-surface-container-lowest rounded-[24px] border border-surface-container p-md hover:shadow-lg transition-all group">
+<div class="w-full aspect-[4/3] bg-surface-container-low rounded-xl mb-md flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl opacity-80 group-hover:scale-110 transition-transform">receipt_long</span>
+</div>
+<div class="mb-sm">
+<h4 class="font-label-md text-label-md text-on-surface truncate">SUNAT_Junio.pdf</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Declaración exitosa</p>
+</div>
+<div class="flex justify-between items-center gap-xs">
+<button class="flex-grow py-2 rounded-lg bg-surface-container-low text-primary font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">Ver</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">download</span></button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">share</span></button>
+</div>
+</div>
+<!-- Document Card 4 -->
+<div class="bg-surface-container-lowest rounded-[24px] border border-surface-container p-md hover:shadow-lg transition-all group">
+<div class="w-full aspect-[4/3] bg-surface-container-low rounded-xl mb-md flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl opacity-80 group-hover:scale-110 transition-transform">description</span>
+</div>
+<div class="mb-sm">
+<h4 class="font-label-md text-label-md text-on-surface truncate">Estatutos.pdf</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hace 3 meses</p>
+</div>
+<div class="flex justify-between items-center gap-xs">
+<button class="flex-grow py-2 rounded-lg bg-surface-container-low text-primary font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">Ver</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">download</span></button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">share</span></button>
+</div>
+</div>
+<!-- Document Card 5 -->
+<div class="bg-surface-container-lowest rounded-[24px] border border-surface-container p-md hover:shadow-lg transition-all group">
+<div class="w-full aspect-[4/3] bg-surface-container-low rounded-xl mb-md flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-5xl opacity-80 group-hover:scale-110 transition-transform">analytics</span>
+</div>
+<div class="mb-sm">
+<h4 class="font-label-md text-label-md text-on-surface truncate">Reporte_Q1.pdf</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Generado hoy</p>
+</div>
+<div class="flex justify-between items-center gap-xs">
+<button class="flex-grow py-2 rounded-lg bg-surface-container-low text-primary font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">Ver</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">download</span></button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined text-[20px]">share</span></button>
+</div>
+</div>
+<!-- Empty State / Add New Placeholder -->
+<div class="bg-surface-container-lowest rounded-[24px] border-2 border-dashed border-outline-variant p-md flex flex-col items-center justify-center hover:bg-surface-container-low cursor-pointer transition-colors group h-full min-h-[220px]">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-4xl mb-md">upload_file</span>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary transition-colors">Subir nuevo archivo</span>
+</div>
+</div>
+<!-- Security Badge (Contextual Assurance) -->
+<div class="mt-xl flex flex-col items-center justify-center p-lg bg-surface-container-low rounded-[24px] text-center border border-surface-container">
+<span class="material-symbols-outlined text-secondary text-4xl mb-xs" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<h4 class="font-headline-md text-headline-md text-on-surface">Encriptación Nivel Institucional</h4>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mt-2">Tus documentos están protegidos con cifrado AES-256. Solo tú tienes las llaves de acceso a 'La Bóveda'.</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-sm text-label-sm">Purchases</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-label-sm">Vault</span>
+</a>
+</nav>
+<script>
+        // Simple interactive feedback for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.opacity = '0.8';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.opacity = '1';
+            });
+        });
+    </script>
+
+
+</body></html>

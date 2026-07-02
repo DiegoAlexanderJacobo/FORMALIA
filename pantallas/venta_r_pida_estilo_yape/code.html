@@ -1,0 +1,287 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .key-press-effect:active {
+            transform: scale(0.92);
+            background-color: #eeedf4;
+            transition: transform 0.1s ease-out;
+        }
+        .gradient-button {
+            background: linear-gradient(135deg, #006c49 0%, #4edea3 100%);
+        }
+        .gradient-button:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+        @keyframes pulse-subtle {
+            0% { box-shadow: 0 0 0 0 rgba(0, 108, 73, 0.2); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 108, 73, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 108, 73, 0); }
+        }
+        .animate-pulse-custom {
+            animation: pulse-subtle 2s infinite;
+        }
+        /* Custom hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#757682",
+                        "surface-container": "#eeedf4",
+                        "surface-bright": "#faf8ff",
+                        "primary-fixed": "#dce1ff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f1f0f7",
+                        "surface-container-high": "#e9e7ef",
+                        "primary": "#00236f",
+                        "on-tertiary-fixed-variant": "#773205",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdbcb",
+                        "on-secondary-fixed-variant": "#005236",
+                        "outline-variant": "#c5c5d3",
+                        "surface-variant": "#e3e1e9",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002113",
+                        "on-tertiary-fixed": "#341100",
+                        "on-primary-fixed-variant": "#264191",
+                        "surface-container-highest": "#e3e1e9",
+                        "on-tertiary-container": "#f39461",
+                        "secondary": "#006c49",
+                        "on-surface-variant": "#444651",
+                        "surface": "#faf8ff",
+                        "inverse-primary": "#b6c4ff",
+                        "tertiary-container": "#6e2c00",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-tertiary": "#ffffff",
+                        "background": "#faf8ff",
+                        "surface-container-low": "#f4f3fa",
+                        "on-primary-container": "#90a8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#1e3a8a",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-fixed-dim": "#ffb691",
+                        "on-background": "#1a1b21",
+                        "surface-dim": "#dad9e1",
+                        "on-primary-fixed": "#00164e",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-surface": "#1a1b21",
+                        "secondary-container": "#6cf8bb",
+                        "surface-tint": "#4059aa",
+                        "on-secondary-container": "#00714d",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2f3036",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#4b1c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "stack-lg": "48px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md overflow-hidden">
+<!-- TopNavBar (Shared Component Identity) -->
+<header class="bg-surface shadow-sm z-50 fixed top-0 w-full h-16">
+
+</header>
+<!-- Main Content Canvas (Focused Desktop View) -->
+<main class="flex-1 mt-16 flex items-center justify-center p-4 lg:p-8">
+<!-- Quick Sale Card - Mimicking Mobile Efficiency on Desktop -->
+<div class="bg-surface-container-lowest rounded-[2rem] shadow-lg w-full max-w-[420px] h-[780px] max-h-[921px] flex flex-col overflow-hidden relative border border-outline-variant/30">
+<!-- Top Half: Display Area -->
+<div class="flex-none h-2/5 flex flex-col items-center justify-center px-8 text-center bg-white">
+<span class="font-label-md text-label-md text-on-surface-variant mb-2 uppercase tracking-widest">Monto de Venta</span>
+<div class="flex items-baseline justify-center">
+<span class="font-headline-lg text-headline-lg text-primary mr-2">S/</span>
+<span class="font-display-lg text-display-lg text-primary transition-all duration-75" id="amount-display">0.00</span>
+</div>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-md text-label-md">Venta Rápida</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded-full font-label-md text-label-md">Categoría 1</span>
+</div>
+</div>
+<!-- Bottom Half: Numeric Keypad -->
+<div class="flex-1 bg-surface-container-low p-6 flex flex-col justify-between">
+<!-- Grid Keypad -->
+<div class="grid grid-cols-3 gap-3 flex-1">
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('1')">1</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('2')">2</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('3')">3</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('4')">4</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('5')">5</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('6')">6</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('7')">7</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('8')">8</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('9')">9</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-error" onclick="clearLast()">
+<span class="material-symbols-outlined text-3xl">backspace</span>
+</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('0')">0</button>
+<button class="key-press-effect flex items-center justify-center bg-white rounded-2xl h-full shadow-sm text-headline-md font-headline-md text-primary" onclick="appendNumber('.')">.</button>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-3 mt-6">
+<button class="w-full py-4 rounded-2xl font-label-md text-label-md bg-surface-container-highest text-on-surface-variant hover:bg-surface-dim transition-colors" onclick="resetAmount()">
+                        Cancelar
+                    </button>
+<button class="gradient-button w-full py-5 rounded-2xl font-label-md text-label-md text-white shadow-lg shadow-secondary/20 flex items-center justify-center gap-2" id="submit-btn" style="opacity: 0.7;">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Registrar Monto
+                    </button>
+</div>
+</div>
+<!-- Subtle Success Pulse Overlay (Hidden) -->
+<div class="absolute inset-0 bg-secondary/90 flex flex-col items-center justify-center text-white opacity-0 pointer-events-none transition-opacity duration-300" id="success-overlay">
+<span class="material-symbols-outlined text-7xl mb-4" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h3 class="font-headline-md text-headline-md">¡Venta Registrada!</h3>
+<p class="font-body-md text-body-md mt-2 opacity-90">Sincronizando con SUNAT...</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on desktop as per rules, but included for responsiveness context) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface shadow-[0px_-4px_20px_rgba(30,58,138,0.05)] h-20 flex justify-around items-center px-4 pb-2">
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-[10px]">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl p-2 px-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-label-md text-[10px]">Nueva Venta</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-[10px]">Reportes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-[10px]">Ajustes</span>
+</div>
+</nav>
+<script>
+        let currentAmount = "0";
+
+        function updateDisplay() {
+            const display = document.getElementById('amount-display');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // Format number to show commas for thousands and fixed decimal
+            let formatted = parseFloat(currentAmount).toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            
+            display.innerText = formatted;
+            
+            // Visual feedback on the button
+            if (parseFloat(currentAmount) > 0) {
+                submitBtn.classList.add('animate-pulse-custom');
+                submitBtn.style.opacity = "1";
+            } else {
+                submitBtn.classList.remove('animate-pulse-custom');
+                submitBtn.style.opacity = "0.7";
+            }
+        }
+
+        function appendNumber(val) {
+            if (currentAmount === "0" && val !== ".") {
+                currentAmount = val;
+            } else {
+                // Prevent multiple decimals
+                if (val === "." && currentAmount.includes(".")) return;
+                
+                // Max length limit
+                if (currentAmount.length > 8) return;
+                
+                // Prevent more than 2 decimals
+                if (currentAmount.includes(".")) {
+                    const decimals = currentAmount.split(".")[1];
+                    if (decimals && decimals.length >= 2) return;
+                }
+                
+                currentAmount += val;
+            }
+            updateDisplay();
+        }
+
+        function clearLast() {
+            if (currentAmount.length > 1) {
+                currentAmount = currentAmount.slice(0, -1);
+            } else {
+                currentAmount = "0";
+            }
+            updateDisplay();
+        }
+
+        function resetAmount() {
+            currentAmount = "0";
+            updateDisplay();
+        }
+
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            if (parseFloat(currentAmount) <= 0) return;
+            
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            
+            // Haptic/Sound feedback logic would go here
+            
+            setTimeout(() => {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                resetAmount();
+            }, 2000);
+        });
+
+        // Initialize display
+        updateDisplay();
+    </script>
+
+
+</body></html>

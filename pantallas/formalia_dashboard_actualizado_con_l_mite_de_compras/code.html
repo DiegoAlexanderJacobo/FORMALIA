@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>FORMALIA - Centro de Mando</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#444651",
+                    "surface-container-high": "#e9e7ef",
+                    "on-secondary-fixed": "#002113",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-error-container": "#93000a",
+                    "primary": "#00236f",
+                    "on-primary-fixed-variant": "#264191",
+                    "on-secondary-fixed-variant": "#005236",
+                    "primary-container": "#1e3a8a",
+                    "surface-tint": "#4059aa",
+                    "inverse-primary": "#b6c4ff",
+                    "tertiary-fixed": "#ffdbcb",
+                    "surface-container": "#eeedf4",
+                    "outline-variant": "#c5c5d3",
+                    "on-surface": "#1a1b21",
+                    "surface-bright": "#faf8ff",
+                    "surface-container-highest": "#e3e1e9",
+                    "secondary-container": "#6cf8bb",
+                    "tertiary-fixed-dim": "#ffb691",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#341100",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#00714d",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#00164e",
+                    "on-primary": "#ffffff",
+                    "outline": "#757682",
+                    "surface": "#faf8ff",
+                    "inverse-on-surface": "#f1f0f7",
+                    "surface-dim": "#dad9e1",
+                    "primary-fixed": "#dce1ff",
+                    "on-tertiary-fixed-variant": "#773205",
+                    "background": "#faf8ff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#f39461",
+                    "secondary": "#006c49",
+                    "primary-fixed-dim": "#b6c4ff",
+                    "surface-variant": "#e3e1e9",
+                    "surface-container-low": "#f4f3fa",
+                    "on-background": "#1a1b21",
+                    "tertiary-container": "#6e2c00",
+                    "inverse-surface": "#2f3036",
+                    "tertiary": "#4b1c00",
+                    "on-primary-container": "#90a8ff",
+                    "secondary-fixed-dim": "#4edea3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "sm": "12px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xs": "8px",
+                    "container-margin": "20px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #006c49 100%);
+        }
+        .progress-bar-fill {
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s ease;
+        }
+        .pulse-shadow {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(0, 108, 73, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 108, 73, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 108, 73, 0); }
+        }
+        .bento-card {
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-toast {
+            animation: slideInUp 0.3s ease-out forwards;
+        }
+        .card-update-flash {
+            animation: flash 1s ease-out;
+        }
+        @keyframes flash {
+            0% { background-color: #6cf8bb; }
+            100% { background-color: #ffffff; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface shadow-sm sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-container-margin h-16 max-w-7xl mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">FORMALIA</div>
+<nav class="hidden md:flex items-center space-x-lg h-full"><a class="font-body-md text-body-md h-full flex items-center px-xs text-primary dark:text-inverse-primary border-b-2 border-primary dark:border-inverse-primary pb-1 font-bold" href="#">Dashboard</a>
+<a class="font-body-md text-body-md h-full flex items-center px-xs text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Roadmap</a>
+<a class="font-body-md text-body-md h-full flex items-center px-xs text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Bóveda</a>
+<a class="font-body-md text-body-md h-full flex items-center px-xs text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Ventas</a>
+<a class="font-body-md text-body-md h-full flex items-center px-xs text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Compras</a></nav>
+<div class="flex items-center space-x-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">JD</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-container-margin py-lg space-y-lg">
+<!-- Header & Month Selector -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Centro de Mando</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Bienvenido de nuevo, José. Tu negocio está creciendo.</p>
+</div>
+<!-- Prominent Month Selector -->
+<div class="flex items-center bg-surface-container-high p-1.5 rounded-2xl shadow-sm border border-outline-variant">
+<button class="p-2 hover:bg-surface-container-lowest rounded-xl transition-all active:scale-95">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="px-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">Junio 2026</span>
+</div>
+<button class="p-2 hover:bg-surface-container-lowest rounded-xl transition-all active:scale-95">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Bento Grid Main Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Ventas Totales (New Primary Card) -->
+<div class="md:col-span-8 bento-card p-xl flex flex-col justify-between min-h-[260px] relative overflow-hidden group border-t-4 border-secondary" id="main-sales-card">
+<div class="absolute top-0 right-0 w-48 h-48 bg-secondary/5 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform duration-500"></div>
+<div>
+<div class="flex items-center gap-xs text-secondary mb-xs">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Ventas del Mes</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-lg text-[40px] md:text-[48px] text-on-surface" id="sales-amount">S/ 4,870.50</span>
+<span class="text-secondary font-label-md text-label-md flex items-center gap-xs bg-secondary-container px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                                +12% vs mayo</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Incluye ventas normales y ventas rápidas (monedero).</p>
+</div>
+</div>
+<div class="flex gap-md items-center mt-xl relative z-10">
+<button class="text-on-secondary font-label-md text-label-md px-lg py-sm rounded-full flex items-center gap-xs pulse-shadow hover:scale-105 active:scale-95 transition-all primary-gradient" onclick="simulateAddSale()">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Nueva Venta
+                    </button>
+<button class="text-primary font-label-md text-label-md px-lg py-sm rounded-full border border-outline-variant hover:bg-surface-container-low transition-all" onclick="window.location.href='#'">
+                        Ver Historial
+                    </button>
+</div>
+</div>
+<!-- Proyección SUNAT -->
+<div class="md:col-span-4 bento-card p-xl border-l-4 border-primary bg-surface-container-lowest flex flex-col">
+<div class="flex justify-between items-start mb-lg">
+<div class="space-y-xs">
+<span class="font-label-md text-label-md text-on-surface-variant">Proyección SUNAT</span>
+<h2 class="font-headline-md text-[32px] text-primary">S/ 20.00</h2>
+</div>
+<div class="bg-primary-fixed text-primary p-3 rounded-2xl">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+</div>
+<div class="p-md bg-surface-container-low rounded-xl mb-4 flex-grow">
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+                        Basado en tus ventas de Junio, el pago estimado de tu cuota RUS es de categoría 1.
+                    </p>
+</div>
+<div class="space-y-2">
+<button class="w-full bg-primary text-on-primary py-sm rounded-xl font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-primary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">description</span>
+                        Generar Guía
+                    </button>
+<button class="w-full text-on-surface-variant font-label-sm text-label-sm text-center flex items-center justify-center hover:underline gap-1">
+                        Ver desglose tributario
+                        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Monedero de hoy (Small Card for ≤ S/ 5.00) -->
+<div class="md:col-span-4 bento-card p-lg cursor-pointer hover:bg-surface-container-low transition-colors group" onclick="alert('Abriendo Historial Monedero...')">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Monedero (Hoy)</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center hover:rotate-90 transition-transform" onclick="event.stopPropagation(); alert('Abriendo Venta Rápida...')">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<div class="space-y-1">
+<div class="text-headline-md font-bold text-on-surface">S/ 42.50</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Solo ventas menores a S/ 5.00</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center text-primary">
+<span class="font-label-sm">Historial Monedero</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Termómetro de Ventas -->
+<div class="md:col-span-4 bento-card p-xl">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface">Ventas</h3>
+<span class="font-label-sm text-label-sm text-orange-700 font-bold px-2 py-0.5 bg-orange-100 rounded-full" id="ventas-status">ALERTA</span>
+</div>
+<div class="space-y-md">
+<div class="flex justify-between font-label-md text-label-md text-on-surface-variant">
+<span class="">S/ 4,200 acumulado</span>
+<span class="">Límite S/ 5,000</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-[#10b981] bg-orange-500" style="width: 84%"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Estás al 84% de tu límite para mantenerte en la Categoría 1.</p>
+</div>
+</div>
+<!-- Termómetro de Compras -->
+<div class="md:col-span-4 bento-card p-xl">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface">Compras</h3>
+<span class="font-label-sm text-label-sm text-red-700 font-bold px-2 py-0.5 bg-red-100 rounded-full" id="compras-status">CRÍTICO</span>
+</div>
+<div class="space-y-md">
+<div class="flex justify-between font-label-md text-label-md text-on-surface-variant">
+<span class="">S/ 4,650 acumulado</span>
+<span class="">Límite S/ 5,000</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-[#f59e0b] bg-red-600" style="width: 93%"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Estás al 93% de tu límite para mantenerte en la Categoría 1.</p>
+</div>
+</div>
+<!-- Insight Card -->
+<div class="md:col-span-12 bento-card p-xl flex flex-col md:flex-row gap-xl items-center">
+<div class="flex-shrink-0 w-full md:w-48 h-32 rounded-2xl overflow-hidden relative group">
+<div class="absolute inset-0 primary-gradient opacity-20 group-hover:opacity-30 transition-opacity"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Financial growth visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqoe7xBufafHsccxQvTmHDC5qNhWeSZ7SruGczf-d6Y8Bx2NpponHm7qeav-zzfLUixC-1qUDRnp8KzmvB64yrdsQt3JamxlyI6SJODEdLNrXhq9CTkyrk8fqfCj9Fb4RS8Dt0nBI8lc9jGr_1KwV-2RZR3wSKAnteB9pmb9fpIDceoe7TsbripUE1y-J6CoA6yLqS3VTom1VBcxB3sqXV45Q60-Vfg8Omeyu1W9tG71aSV3AKKqjWJFgLZz06XDe40a1K7szyy6Dz"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs">Formalizar es crecer</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                        Has registrado un 15% más de boletas que el mes pasado. Esta consistencia mejora tu perfil crediticio con bancos locales.
+                    </p>
+<div class="flex flex-wrap gap-md">
+<span class="px-md py-xs bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span> Perfil: Confiable
+                        </span>
+<span class="px-md py-xs bg-primary-fixed text-primary rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> Meta: Expansión
+                        </span>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline p-2 hover:bg-surface-container-low rounded-full transition-colors">more_vert</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Consistent Ecosystem Access) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(0,0,0,0.08)] rounded-t-[20px] border-t border-outline-variant/30">
+<a class="flex flex-col items-center justify-center text-primary rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm font-bold">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Ventas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-sm text-label-sm">Compras</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-label-sm">Asistente</span>
+</a>
+</nav>
+<!-- Floating Action / Chatbot -->
+<div class="fixed bottom-24 md:bottom-lg right-lg z-50">
+<button class="primary-gradient w-16 h-16 rounded-2xl shadow-xl flex items-center justify-center text-on-primary hover:scale-110 active:scale-95 transition-all group relative" id="chatbot-trigger">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="absolute right-20 top-1/2 -translate-y-1/2 bg-inverse-surface text-inverse-on-surface px-md py-xs rounded-lg text-label-sm whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-md">
+                ¿Necesitas ayuda con SUNAT?
+            </span>
+</button>
+</div>
+<!-- Toast Notification Container -->
+<div class="fixed bottom-32 md:bottom-28 left-1/2 -translate-x-1/2 z-[60] pointer-events-none" id="toast-container"></div>
+<script>
+        function simulateAddSale() {
+            // Simulate adding a sale
+            const amountElement = document.getElementById('sales-amount');
+            const card = document.getElementById('main-sales-card');
+            
+            // Add visual feedback
+            card.classList.add('card-update-flash');
+            setTimeout(() => card.classList.remove('card-update-flash'), 1000);
+
+            // Update value with micro-animation
+            const currentAmount = 4820.50;
+            const newAmount = currentAmount + 50.00;
+            amountElement.textContent = `S/ ${newAmount.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+
+            // Show floating alert (Toast)
+            showToast('✅ Venta registrada con éxito');
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-inverse-surface text-inverse-on-surface px-lg py-sm rounded-full shadow-lg font-label-md flex items-center gap-2 animate-toast mb-2';
+            toast.innerHTML = `<span class="material-symbols-outlined text-secondary-fixed">check_circle</span> ${message}`;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+                setTimeout(() => toast.remove(), 500);
+            }, 3000);
+        }
+
+        // Handle Thermometer Colors
+        const bars = document.querySelectorAll('.progress-bar-fill');
+        bars.forEach(bar => {
+            const width = parseInt(bar.style.width);
+            const parent = bar.closest('.bento-card');
+            const statusLabel = parent.querySelector('[id$="-status"]');
+
+            if (width <= 70) {
+                bar.classList.add('bg-emerald-500');
+                if(statusLabel) {
+                    statusLabel.textContent = "SALUDABLE";
+                    statusLabel.className = "font-label-sm text-label-sm text-secondary font-bold px-2 py-0.5 bg-secondary-container rounded-full";
+                }
+            } else if (width <= 90) {
+                bar.classList.add('bg-orange-500');
+                if(statusLabel) {
+                    statusLabel.textContent = "ALERTA";
+                    statusLabel.className = "font-label-sm text-label-sm text-orange-700 font-bold px-2 py-0.5 bg-orange-100 rounded-full";
+                }
+            } else {
+                bar.classList.add('bg-red-600');
+                if(statusLabel) {
+                    statusLabel.textContent = "CRÍTICO";
+                    statusLabel.className = "font-label-sm text-label-sm text-red-700 font-bold px-2 py-0.5 bg-red-100 rounded-full";
+                }
+            }
+        });
+
+        document.getElementById('chatbot-trigger').addEventListener('click', () => {
+            showToast('🤖 Asistente Formalia listo');
+        });
+    </script>
+</body></html>
