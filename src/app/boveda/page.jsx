@@ -36,7 +36,7 @@ export default function Boveda() {
   });
 
   return (
-    <main className="pt-24 px-container-margin max-w-7xl mx-auto space-y-lg text-left relative min-h-[85vh] pb-24 md:pb-12">
+    <main className="pt-12 px-container-margin max-w-7xl mx-auto space-y-lg text-left relative min-h-[85vh] pb-24 md:pb-12">
       
       {/* Toast feedback */}
       {toastMessage && (
@@ -84,7 +84,7 @@ export default function Boveda() {
 
           <button
             onClick={handleUpload}
-            className="flex items-center justify-center gap-xs px-lg h-12 bg-gradient-primary text-white rounded-xl font-label-md text-sm shadow-md active:scale-95 transition-transform cursor-pointer font-bold shrink-0"
+            className="flex items-center justify-center gap-xs px-lg h-12 primary-gradient text-white rounded-xl font-label-md text-sm shadow-md active:scale-95 transition-transform cursor-pointer font-bold shrink-0"
           >
             <span className="material-symbols-outlined">upload_file</span>
             Subir Documento

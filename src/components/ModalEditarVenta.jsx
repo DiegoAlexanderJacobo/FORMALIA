@@ -88,6 +88,7 @@ export default function ModalEditarVenta({ isOpen, onClose, saleData }) {
                   required
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
+                  max={new Date().toISOString().split('T')[0]}
                   className="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface outline-none"
                 />
               </div>

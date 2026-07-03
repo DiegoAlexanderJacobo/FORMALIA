@@ -294,13 +294,52 @@ export function AppProvider({ children }) {
     saveState('formalia_notifications', updated, setNotifications);
   };
 
+  // Reset session for a new user registration
+  const resetUserSession = (completeMission1 = false) => {
+    saveState('formalia_sales', [], setSales);
+    saveState('formalia_purchases', [], setPurchases);
+    saveState('formalia_monedero_acumulado', 0, setMonederoAcumulado);
+    saveState('formalia_monedero_history', [], setMonederoHistory);
+    saveState('formalia_vault_docs', [], setVaultDocuments);
+    
+    let initialScore = 0;
+    const initialMissions = [
+      { id: 1, title: 'Obtener RUC 10', status: 'active', scoreReward: 150 },
+      { id: 2, title: 'Firma de Documentos (FUT)', status: 'locked', scoreReward: 100 },
+      { id: 3, title: 'Primera Declaración Simplificada', status: 'locked', scoreReward: 150 },
+      { id: 4, title: 'Mantener Historial de Ventas (3 meses)', status: 'locked', scoreReward: 200 },
+    ];
+    
+    if (completeMission1) {
+      initialScore = 150;
+      initialMissions[0].status = 'completed';
+      initialMissions[1].status = 'active';
+    }
+    
+    saveState('formalia_trust_score', initialScore, setTrustScore);
+    saveState('formalia_roadmap_missions', initialMissions, setRoadmapMissions);
+
+    const welcomeNotification = [
+      {
+        id: 1,
+        title: '¡Te damos la bienvenida a Formalia!',
+        description: 'Tu portal para registrar ventas, compras y avanzar hacia el crecimiento formal.',
+        type: 'info',
+        time: 'Hace un momento',
+        read: false
+      }
+    ];
+    saveState('formalia_notifications', welcomeNotification, setNotifications);
+  };
+
   // Update Profile / User Info
   const updateProfile = (fields) => {
-    const updatedUser = { ...user, ...fields };
+    const { fromOnboarding, ...profileFields } = fields;
+    const updatedUser = { ...user, ...profileFields };
     saveState('formalia_user', updatedUser, setUser);
 
     // If RUC added, complete Mission 1
-    if (fields.ruc && fields.ruc.length === 11 && roadmapMissions[0].status !== 'completed') {
+    if (profileFields.ruc && profileFields.ruc.length === 11 && !fromOnboarding && roadmapMissions[0].status !== 'completed') {
       completeMission(1);
     }
   };
@@ -364,6 +403,7 @@ export function AppProvider({ children }) {
       deleteNotification,
       updateProfile,
       addDocument,
+      resetUserSession,
     }}>
       {children}
     </AppContext.Provider>

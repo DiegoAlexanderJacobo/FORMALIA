@@ -6,7 +6,7 @@ import { useApp } from '@/context/AppContext';
 
 export default function OnboardingPage() {
   const router = useRouter();
-  const { user, updateProfile, completeMission } = useApp();
+  const { user, updateProfile, completeMission, resetUserSession } = useApp();
 
   const [step, setStep] = useState(1);
 
@@ -105,6 +105,9 @@ export default function OnboardingPage() {
       updateProfile({ signature: signatureDataUrl });
       setStep(4);
     } else if (step === 4 && isStep4Valid) {
+      // Reset all mock database data to a clean slate
+      resetUserSession(hasRuc && rucNum.length === 11);
+
       // Finish onboarding
       updateProfile({
         email,
@@ -115,11 +118,8 @@ export default function OnboardingPage() {
         hasRuc,
         registrationDone: true,
         loggedIn: true,
+        fromOnboarding: true
       });
-
-      if (hasRuc && rucNum.length === 11) {
-        completeMission(1);
-      }
 
       router.push('/dashboard');
     }
@@ -188,7 +188,7 @@ export default function OnboardingPage() {
                     id="email"
                     type="email"
                     required
-                    placeholder="nombre@empresa.com"
+                    placeholder="correo@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface outline-none"

@@ -48,9 +48,13 @@ export default function Dashboard() {
     addTrustPoints(30);
   };
 
+  // Determine dynamically based on Category
+  const currentCategory = sunatInfo?.categoria || 1;
+  const limitValue = currentCategory === 1 ? 5000 : 8000;
+
   // Progress bar percentages (capped at 100)
-  const salesPercent = Math.min(100, (totalVentasMonth / 8000) * 100);
-  const purchasesPercent = Math.min(100, (totalComprasMonth / 8000) * 100);
+  const salesPercent = Math.min(100, (totalVentasMonth / limitValue) * 100);
+  const purchasesPercent = Math.min(100, (totalComprasMonth / limitValue) * 100);
 
   // Helper function to get color for progress bars based on percentage
   const getProgressColorClass = (percent) => {
@@ -267,11 +271,18 @@ export default function Dashboard() {
                 <span className="material-symbols-outlined text-[20px] text-secondary">speed</span>
                 <span className="font-label-md text-label-md font-bold">Termómetro de Ventas</span>
               </div>
-              <span className="text-xs font-black text-on-surface">S/ 8,000 Límite</span>
+              <span className="text-xs font-black text-on-surface">S/ {limitValue.toLocaleString()} Límite</span>
             </div>
             
-            <p className="text-[11px] text-on-surface-variant leading-tight mb-2">
-              Evita exceder el tope mensual del Nuevo RUS para no ser multado.
+            <p className="text-[11px] text-on-surface-variant leading-tight mb-5">
+              {currentCategory === 1 ? (
+                <>
+                  Estás en la Categoría 1. Si superas este límite pasarás a la{' '}
+                  <span className="text-amber-600 font-bold">Categoría 2</span> (cuota de S/ 50).
+                </>
+              ) : (
+                "Evita exceder el tope mensual de S/ 8,000 del Nuevo RUS para no ser multado o salir del régimen."
+              )}
             </p>
           </div>
 
@@ -289,6 +300,9 @@ export default function Dashboard() {
                 style={{ width: `${salesPercent}%` }}
               />
             </div>
+            <div className="text-[10px] text-on-surface-variant font-semibold text-right mt-1">
+              Monto de ventas: S/ {totalVentasMonth.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
+            </div>
           </div>
         </div>
 
@@ -300,11 +314,11 @@ export default function Dashboard() {
                 <span className="material-symbols-outlined text-[20px] text-primary">shield</span>
                 <span className="font-label-md text-label-md font-bold">Escudo de Compras</span>
               </div>
-              <span className="text-xs font-black text-on-surface">S/ 8,000 Límite</span>
+              <span className="text-xs font-black text-on-surface">S/ {limitValue.toLocaleString()} Límite</span>
             </div>
             
-            <p className="text-[11px] text-on-surface-variant leading-tight mb-2">
-              Tus facturas de compra sustentan tu mercadería frente a decomisos.
+            <p className="text-[11px] text-on-surface-variant leading-tight mb-5">
+              Tus facturas de compra sustentan tu mercadería frente a decomisos.{' '}
             </p>
           </div>
 
@@ -322,13 +336,16 @@ export default function Dashboard() {
                 style={{ width: `${purchasesPercent}%` }}
               />
             </div>
+            <div className="text-[10px] text-on-surface-variant font-semibold text-right mt-1">
+              Monto de compras: S/ {totalComprasMonth.toLocaleString('es-PE', { minimumFractionDigits: 2 })}
+            </div>
           </div>
         </div>
 
       </div>
 
-      {/* DEV / SIMULATOR TOOL PANEL */}
-      {showDevPanel && (
+      {/* DEV / SIMULATOR TOOL PANEL OR INSIGHT CARD */}
+      {showDevPanel ? (
         <section className="bg-surface-container-high/40 p-lg rounded-[28px] border-2 border-dashed border-outline-variant/50 text-left space-y-md mt-xl animate-toast">
           <div className="flex justify-between items-center border-b border-outline-variant/30 pb-xs">
             <div className="flex items-center gap-sm text-primary">
@@ -390,6 +407,35 @@ export default function Dashboard() {
             </button>
           </div>
         </section>
+      ) : (
+        /* Insight Card shown when console is hidden */
+        <div className="md:col-span-12 bento-card p-xl flex flex-col md:flex-row gap-xl items-center text-left mt-xl">
+          <div className="flex-shrink-0 w-full md:w-48 h-32 rounded-2xl overflow-hidden relative group">
+            <div className="absolute inset-0 primary-gradient opacity-20 group-hover:opacity-30 transition-opacity"></div>
+            <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Financial growth visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqoe7xBufafHsccxQvTmHDC5qNhWeSZ7SruGczf-d6Y8Bx2NpponHm7qeav-zzfLUixC-1qUDRnp8KzmvB64yrdsQt3JamxlyI6SJODEdLNrXhq9CTkyrk8fqfCj9Fb4RS8Dt0nBI8lc9jGr_1KwV-2RZR3wSKAnteB9pmb9fpIDceoe7TsbripUE1y-J6CoA6yLqS3VTom1VBcxB3sqXV45Q60-Vfg8Omeyu1W9tG71aSV3AKKqjWJFgLZz06XDe40a1K7szyy6Dz"/>
+          </div>
+          <div className="flex-grow">
+            <h4 className="font-headline-md text-headline-md text-on-surface mb-xs">Formalizar es crecer</h4>
+            <p className="font-body-md text-body-md text-on-surface-variant mb-md">
+              Has registrado un 15% más de boletas que el mes pasado. Esta consistencia mejora tu perfil crediticio con bancos locales.
+            </p>
+            <div className="flex flex-wrap gap-md">
+              <span className="px-md py-xs bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">verified</span> Perfil: Confiable
+              </span>
+              <span className="px-md py-xs bg-primary-fixed text-primary rounded-full font-label-sm text-label-sm flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">trending_up</span> Meta: Expansión
+              </span>
+            </div>
+          </div>
+          <button
+            onClick={() => setShowDevPanel(true)}
+            title="Mostrar consola de simulación"
+            className="material-symbols-outlined text-outline p-2 hover:bg-surface-container-low rounded-full transition-colors cursor-pointer"
+          >
+            more_vert
+          </button>
+        </div>
       )}
 
       {/* Modals Mounting */}

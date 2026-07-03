@@ -8,8 +8,18 @@ import { useApp } from '@/context/AppContext';
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { notifications, markAllNotifsRead, triggerDailyCorte, monederoAcumulado } = useApp();
+  const { notifications, markAllNotifsRead, triggerDailyCorte, monederoAcumulado, user } = useApp();
   const [showNotifMenu, setShowNotifMenu] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  // Helper to compute initials
+  const getInitials = (name) => {
+    if (!name) return 'JD';
+    const parts = name.trim().split(/\s+/);
+    if (parts.length === 0) return 'JD';
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
 
   const unreadNotifs = notifications.filter(n => !n.read);
   const unreadCount = unreadNotifs.length;
@@ -71,7 +81,10 @@ export default function Navbar() {
           {/* Notification Bell */}
           <div className="relative">
             <button
-              onClick={() => setShowNotifMenu(!showNotifMenu)}
+              onClick={() => {
+                setShowNotifMenu(!showNotifMenu);
+                setShowProfileMenu(false);
+              }}
               className="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors relative cursor-pointer"
             >
               notifications
@@ -139,13 +152,48 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* User Profile initials / initials avatar */}
-          <Link
-            href="/perfil"
-            className="w-8 h-8 rounded-full bg-primary-fixed hover:scale-105 transition-transform flex items-center justify-center text-primary font-bold text-xs"
-          >
-            JD
-          </Link>
+          {/* User Profile initials / dropdown menu trigger */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setShowProfileMenu(!showProfileMenu);
+                setShowNotifMenu(false);
+              }}
+              className="w-8 h-8 rounded-full bg-primary-fixed hover:scale-105 transition-transform flex items-center justify-center text-primary font-bold text-xs cursor-pointer focus:outline-none"
+            >
+              {getInitials(user?.name)}
+            </button>
+
+            {showProfileMenu && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-outline-variant/30 py-2 z-50 animate-toast">
+                <div className="px-md py-xs border-b border-outline-variant/20 mb-1 text-left">
+                  <p className="font-label-md text-label-sm font-bold text-on-surface">{user?.name || 'Juan Diego'}</p>
+                  <p className="text-[10px] text-on-surface-variant font-medium">Perfil: Confiable</p>
+                </div>
+                
+                <div className="flex flex-col">
+                  <Link
+                    href="/perfil"
+                    onClick={() => setShowProfileMenu(false)}
+                    className="px-md py-2 text-left text-xs font-semibold text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-2"
+                  >
+                    <span className="material-symbols-outlined text-[16px] text-on-surface-variant">person</span>
+                    Mi Perfil
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setShowProfileMenu(false);
+                      router.push('/login');
+                    }}
+                    className="px-md py-2 text-left text-xs font-semibold text-error hover:bg-error-container/10 transition-colors flex items-center gap-2 cursor-pointer w-full"
+                  >
+                    <span className="material-symbols-outlined text-[16px] text-error">logout</span>
+                    Cerrar Sesión
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>

@@ -126,7 +126,7 @@ export default function LandingPage() {
                   </p>
                   
                   {/* Internal Mockup Progress */}
-                  <div className="w-full max-w-md bg-surface-container-low rounded-xl p-md">
+                  <div className="w-full bg-surface-container-low rounded-xl p-md">
                     <div className="flex justify-between items-center mb-xs">
                       <span className="font-label-md text-on-surface">Progreso de registro</span>
                       <span className="font-label-md text-secondary font-bold">65%</span>
@@ -170,14 +170,14 @@ export default function LandingPage() {
                   <div className="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-surface-container flex items-center justify-center">
                     <span className="material-symbols-outlined text-sm">verified_user</span>
                   </div>
-                  <div className="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-primary-container flex items-center justify-center text-on-primary-container">
-                    <span className="font-label-sm font-bold">+3</span>
+                  <div className="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-primary flex items-center justify-center text-on-primary-container">
+                    <span className="font-label-sm text-white font-bold">+3</span>
                   </div>
                 </div>
               </div>
 
               {/* Reports Bento Card */}
-              <div className="bento-card bg-surface-container-highest p-xl rounded-[24px] md:col-span-2 relative overflow-hidden flex flex-col md:flex-row items-center gap-lg text-left">
+              <div className="bg-surface-container-highest p-xl rounded-[24px] md:col-span-2 relative overflow-hidden flex flex-col md:flex-row items-center gap-lg text-left">
                 <div className="flex-1">
                   <h3 className="font-headline-md text-on-surface mb-sm">Reportes al instante</h3>
                   <p className="font-body-md text-on-surface-variant">
