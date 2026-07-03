@@ -88,6 +88,7 @@ export function AppProvider({ children }) {
       const storedDocs = localStorage.getItem('formalia_vault_docs');
       const storedNotifs = localStorage.getItem('formalia_notifications');
 
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (storedUser) setUser(JSON.parse(storedUser));
       if (storedSales) setSales(JSON.parse(storedSales));
       if (storedPurchases) setPurchases(JSON.parse(storedPurchases));
@@ -113,6 +114,7 @@ export function AppProvider({ children }) {
   // Add Sale
   const addSale = (sale) => {
     const newSale = {
+      // eslint-disable-next-line react-hooks/purity
       id: Date.now(),
       date: sale.date || new Date().toISOString().split('T')[0],
       amount: parseFloat(sale.amount),
@@ -209,8 +211,11 @@ export function AppProvider({ children }) {
       status: 'finalizado',
     };
 
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
     const nextDay = {
-      date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+      date: tomorrow.toISOString().split('T')[0],
       amount: 0,
       status: 'en_curso',
     };
